@@ -43,8 +43,7 @@ module.exports = {
         })
     },
     updateName: (req,res)=> {
-        // , {runValidators:true}
-        Scores.findOneAndUpdate({ _id: req.params.id }, { Name: req.body.Name})
+        Scores.findOneAndUpdate({ _id: req.params.id }, { Name: req.body.Name}, {runValidators:true})
         .then(data =>{
             console.log("Data: ", data);
             res.json({message: "Success", data:data});
@@ -63,5 +62,5 @@ module.exports = {
         .catch(err => {
             res.json({ message: "Error", error:err});
         })
-    }
+    },
 }
